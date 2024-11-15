@@ -14,8 +14,8 @@ namespace SL.Domain.Models
         [GreaterThanZero]
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        
+
         [Required, StringLength(200, ErrorMessage = "Customer name cannot exceed 200 characters.")]
-        public string CustomerName { get; set; }
+        public string CustomerName { get; set; } = string.Empty;
     }
 }

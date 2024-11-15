@@ -53,6 +53,8 @@ namespace SL.Application.Services.Mappers
 
                 // Create an instance of the target class
                 var targetInstance = Activator.CreateInstance(targetClassType);
+                if(targetInstance is null)
+                    throw new InvalidOperationException($"targetInstance could not be found.");
 
                 // Map properties from source to target
                 foreach (var field in mapping.Fields)
@@ -94,7 +96,7 @@ namespace SL.Application.Services.Mappers
             }
         }
 
-        private object ApplyConversion(object value, string conversionType, string format)
+        private object ApplyConversion(object value, string? conversionType, string? format)
         {
             try
             {

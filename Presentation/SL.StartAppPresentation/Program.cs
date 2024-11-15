@@ -37,12 +37,9 @@ try
     ////};
 
 
-    //// Initialize MapHandler with the mapper
-    //var mapHandler = new MapHandler(mapper);
-
     // Perform mapping
     object googleReservation = await mapHandler.Map(reservation, "Models.ReservationMdl", "Google.Reservation");
-    //object googleReservation = mapHandler.Map(GoogleReservation, "Google.Reservation", "Models.ReservationMdl");
+    //object modelReservation = mapHandler.Map(GoogleReservation, "Google.Reservation", "Models.ReservationMdl");
 
     // Access properties of dynamically created type
     var googleReservationType = googleReservation.GetType();

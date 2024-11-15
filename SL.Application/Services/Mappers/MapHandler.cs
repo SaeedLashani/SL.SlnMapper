@@ -32,8 +32,6 @@ namespace SL.Application.Services.Mappers
 
                 var config = await _jsonRepo.LoadJsonFileAsync(filePath);
 
-                //IMapAlgorithm mapAlgorithm = new DynamicMapper(config);
-
                 return _mapAlgorithm.Execute(source, sourceType, targetType, config);
 
             }
