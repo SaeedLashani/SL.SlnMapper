@@ -1,0 +1,20 @@
+2024-11-14 20:12:06,993 [1] INFO  Program - Application is starting...
+2024-11-14 20:12:31,842 [7] ERROR SL.Application.Services.Mappers.DynamicMapper - An unexpected error occurred in Execute Method
+System.DivideByZeroException: Attempted to divide by zero.
+   at SL.Application.Services.Mappers.DynamicMapper.Execute(Object source, String sourceType, String targetType) in C:\Dirs21CodeChallenge\Code\SL.SlnMapper\SL.Application\Services\Mappers\DynamicMapper.cs:line 30
+2024-11-14 20:13:02,031 [7] ERROR SL.Application.Services.Mappers.MapHandler - An unexpected error occurred in Map Method
+System.DivideByZeroException: Attempted to divide by zero.
+   at SL.Application.Services.Mappers.DynamicMapper.Execute(Object source, String sourceType, String targetType) in C:\Dirs21CodeChallenge\Code\SL.SlnMapper\SL.Application\Services\Mappers\DynamicMapper.cs:line 30
+   at SL.Application.Services.Mappers.MapHandler.Map(Object source, String sourceType, String targetType) in C:\Dirs21CodeChallenge\Code\SL.SlnMapper\SL.Application\Services\Mappers\MapHandler.cs:line 35
+2024-11-14 20:13:10,362 [7] ERROR Program - An unexpected error occurred please check the logs
+2024-11-14 20:14:33,341 [1] INFO  Program - Application is starting...
+2024-11-14 20:14:37,135 [5] ERROR SL.Application.Services.Mappers.DynamicMapper - An unexpected error occurred in Execute Method
+System.DivideByZeroException: Attempted to divide by zero.
+   at SL.Application.Services.Mappers.DynamicMapper.Execute(Object source, String sourceType, String targetType) in C:\Dirs21CodeChallenge\Code\SL.SlnMapper\SL.Application\Services\Mappers\DynamicMapper.cs:line 30
+2024-11-14 20:14:37,192 [5] ERROR SL.Application.Services.Mappers.MapHandler - An unexpected error occurred in Map Method
+System.DivideByZeroException: Attempted to divide by zero.
+   at SL.Application.Services.Mappers.DynamicMapper.Execute(Object source, String sourceType, String targetType) in C:\Dirs21CodeChallenge\Code\SL.SlnMapper\SL.Application\Services\Mappers\DynamicMapper.cs:line 30
+   at SL.Application.Services.Mappers.MapHandler.Map(Object source, String sourceType, String targetType) in C:\Dirs21CodeChallenge\Code\SL.SlnMapper\SL.Application\Services\Mappers\MapHandler.cs:line 35
+2024-11-14 20:14:37,237 [5] ERROR Program - An unexpected error occurred please check the logs
+2024-11-14 20:44:57,442 [1] INFO  Program - Application is starting...
+2024-11-14 22:19:35,249 [1] INFO  Program - Application is starting...

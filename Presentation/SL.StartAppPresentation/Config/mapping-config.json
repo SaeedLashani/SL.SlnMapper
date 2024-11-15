@@ -1,0 +1,54 @@
+{
+    "types": [
+        {
+            "name": "Google.Reservation",
+            "properties": {
+                "GoogleReservationId": "string",
+                "DateOfReservation": "string",
+                "GuestName": "string"
+            }
+        }
+    ],
+    "mappings": [
+        {
+            "GenerateClassFlag": "True",
+            "sourceType": "Models.ReservationMdl",
+            "targetType": "Google.Reservation",
+            "fields": {
+                "Id": {
+                    "targetField": "GoogleReservationId",
+                    "conversionType": "IntToString"
+                },
+                "Date": {
+                    "targetField": "DateOfReservation",
+                    "conversionType": "DateTimeToString",
+                    "format": "yyyy-MM-dd"
+                },
+                "CustomerName": {
+                    "targetField": "GuestName",
+                    "conversionType": null
+                }
+            }
+        },
+        {
+            "GenerateClassFlag": "False",
+            "sourceType": "Google.Reservation",
+            "targetType": "Models.ReservationMdl",
+            "fields": {
+                "GoogleReservationId": {
+                    "targetField": "Id",
+                    "conversionType": "StringToInt"
+                },
+                "DateOfReservation": {
+                    "targetField": "Date",
+                    "conversionType": "StringToDateTime",
+                    "format": "yyyy-MM-dd"
+                },
+                "GuestName": {
+                    "targetField": "CustomerName",
+                    "conversionType": null
+                }
+            }
+        }
+    ]
+}

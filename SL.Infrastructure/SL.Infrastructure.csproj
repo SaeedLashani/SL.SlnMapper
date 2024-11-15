@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="FieldMapping.cs" />
+    <Compile Remove="MappingConfigurationService.cs" />
+    <Compile Remove="MappingDefinition.cs" />
+    <Compile Remove="TypeDefinition.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SL.Application\SL.Application.csproj" />
+    <ProjectReference Include="..\SL.Domain\SL.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
