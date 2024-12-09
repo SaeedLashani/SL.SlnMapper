@@ -9,6 +9,6 @@ namespace SL.Application.Services.Mappers.Interfaces
 {
     public interface IMapAlgorithm
     {
-        object Execute(object source, string sourceType, string targetType, MappingConfiguration config);
+        object Execute(object source, string sourceType, string targetType, MappingConfigurationMdl config);
     }
 }

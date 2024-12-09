@@ -4,24 +4,27 @@ using SL.Application.Services.Mappers;
 using SL.Domain.Models;
 using Xunit;
 
-public class DynamicTypeBuilderTests
+namespace SL.Testes
 {
-    [Fact]
-    public void CreateType_ShouldGenerateTypeWithProperties()
+    public class DynamicTypeBuilderTests
     {
-        // Arrange
-        var typeDefinition = new TypeDefinition
+        [Fact]
+        public void CreateType_ShouldGenerateTypeWithProperties()
         {
-            Name = "TestType",
-            Properties = new Dictionary<string, string> { { "Property1", "string" } }
-        };
+            // Arrange
+            var typeDefinition = new TypeDefinition
+            {
+                Name = "TestType",
+                Properties = new Dictionary<string, string> { { "Property1", "string" } }
+            };
 
-        // Act
-        var generatedType = DynamicTypeBuilder.CreateType(typeDefinition);
+            // Act
+            var generatedType = DynamicTypeBuilder.CreateType(typeDefinition);
 
-        // Assert
-        Assert.NotNull(generatedType);
-        Assert.Equal("TestType", generatedType.Name);
-        Assert.NotNull(generatedType.GetProperty("Property1"));
+            // Assert
+            Assert.NotNull(generatedType);
+            Assert.Equal("TestType", generatedType.Name);
+            Assert.NotNull(generatedType.GetProperty("Property1"));
+        }
     }
 }

@@ -14,23 +14,12 @@ namespace SL.Infrastructure
     public class JsonRepo : IJsonRepo
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(JsonRepo));
-        public async Task<MappingConfiguration> LoadJsonFileAsync(string filePath)
+        public async Task<MappingConfigurationMdl> LoadJsonFileAsync(string filePath)
         {
-            try
-            {
-                var json = await File.ReadAllTextAsync(filePath);
-                return JsonConvert.DeserializeObject<MappingConfiguration>(json);
-            }
-            catch (FileNotFoundException ex)
-            {
-                log.Error($"Json file not found at path: {filePath}", ex);
-                throw;
-            }
-            catch (Exception ex)
-            {
-                log.Error("An unexpected error occurred in LoadJsonFileAsync Method", ex);
-                throw;
-            }
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException($"Configuration file not found at path: {filePath}");
+            var json = await File.ReadAllTextAsync(filePath);
+            return JsonConvert.DeserializeObject<MappingConfigurationMdl>(json);
         }
     }
 }

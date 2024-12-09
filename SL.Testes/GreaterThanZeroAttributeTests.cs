@@ -2,34 +2,38 @@
 using SL.Domain.Validation;
 using Xunit;
 
-public class GreaterThanZeroAttributeTests
+
+namespace SL.Testes
 {
-    [Fact]
-    public void GreaterThanZeroAttribute_ShouldPass_WhenValueIsGreaterThanZero()
+    public class GreaterThanZeroAttributeTests
     {
-        // Arrange
-        var attribute = new GreaterThanZeroAttribute();
-        var value = 1;
+        [Fact]
+        public void GreaterThanZeroAttribute_ShouldPass_WhenValueIsGreaterThanZero()
+        {
+            // Arrange
+            var attribute = new GreaterThanZeroAttribute();
+            var value = 1;
 
-        // Act
-        var result = attribute.GetValidationResult(value, new ValidationContext(value));
+            // Act
+            var result = attribute.GetValidationResult(value, new ValidationContext(value));
 
-        // Assert
-        Assert.Equal(ValidationResult.Success, result);
-    }
+            // Assert
+            Assert.Equal(ValidationResult.Success, result);
+        }
 
-    [Fact]
-    public void GreaterThanZeroAttribute_ShouldFail_WhenValueIsZeroOrLess()
-    {
-        // Arrange
-        var attribute = new GreaterThanZeroAttribute();
-        var value = 0;
+        [Fact]
+        public void GreaterThanZeroAttribute_ShouldFail_WhenValueIsZeroOrLess()
+        {
+            // Arrange
+            var attribute = new GreaterThanZeroAttribute();
+            var value = 0;
 
-        // Act
-        var result = attribute.GetValidationResult(value, new ValidationContext(value));
+            // Act
+            var result = attribute.GetValidationResult(value, new ValidationContext(value));
 
-        // Assert
-        Assert.NotNull(result);
-        Assert.Equal("The Int32 field must be greater than zero.", result.ErrorMessage);
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("The Int32 field must be greater than zero.", result.ErrorMessage);
+        }
     }
 }

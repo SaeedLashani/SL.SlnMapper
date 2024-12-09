@@ -3,37 +3,40 @@ using System.Collections.Generic;
 using SL.Domain.Models;
 using Xunit;
 
-public class MappingConfigurationTests
+namespace SL.Testes
 {
-    [Fact]
-    public void MappingConfiguration_ShouldInitializeCorrectly()
+    public class MappingConfigurationTests
     {
-        // Arrange
-        var types = new List<TypeDefinition>
+        [Fact]
+        public void MappingConfiguration_ShouldInitializeCorrectly()
         {
-            new TypeDefinition { Name = "TestType", Properties = new Dictionary<string, string> { { "Property1", "string" } } }
-        };
-        var mappings = new List<MappingDefinition>
-        {
-            new MappingDefinition
+            // Arrange
+            var types = new List<TypeDefinition>
             {
-                SourceType = "SourceType",
-                TargetType = "TargetType",
-                Fields = new Dictionary<string, FieldMapping> { { "Field1", new FieldMapping { TargetField = "TargetField1" } } }
-            }
-        };
+                new TypeDefinition { Name = "TestType", Properties = new Dictionary<string, string> { { "Property1", "string" } } }
+            };
+            var mappings = new List<MappingDefinition>
+            {
+                new MappingDefinition
+                {
+                    SourceType = "SourceType",
+                    TargetType = "TargetType",
+                    Fields = new Dictionary<string, FieldMapping> { { "Field1", new FieldMapping { TargetField = "TargetField1" } } }
+                }
+            };
 
-        // Act
-        var config = new MappingConfiguration
-        {
-            Types = types,
-            Mappings = mappings
-        };
+            // Act
+            var config = new MappingConfigurationMdl
+            {
+                Types = types,
+                Mappings = mappings
+            };
 
-        // Assert
-        Assert.NotNull(config.Types);
-        Assert.NotNull(config.Mappings);
-        Assert.Single(config.Types);
-        Assert.Single(config.Mappings);
+            // Assert
+            Assert.NotNull(config.Types);
+            Assert.NotNull(config.Mappings);
+            Assert.Single(config.Types);
+            Assert.Single(config.Mappings);
+        }
     }
 }

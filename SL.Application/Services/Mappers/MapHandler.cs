@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using log4net;
-using SL.Application.InfrastructureInterfaces;
+﻿using SL.Application.InfrastructureInterfaces;
 using SL.Application.Services.Mappers.Interfaces;
+using SL.Application.Utils;
+using SL.Domain.Models;
 
 
 namespace SL.Application.Services.Mappers
@@ -14,7 +10,6 @@ namespace SL.Application.Services.Mappers
     {
         private readonly IJsonRepo _jsonRepo;
         private readonly IMapAlgorithm _mapAlgorithm;
-        private static readonly ILog log = LogManager.GetLogger(typeof(MapHandler));
 
         public MapHandler(IJsonRepo jsonRepo, IMapAlgorithm mapAlgorithm)
         {
@@ -26,20 +21,37 @@ namespace SL.Application.Services.Mappers
         {
             try
             {
-                string filePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "Config", "mapping-config.json");
-                if (!File.Exists(filePath))
-                    throw new FileNotFoundException($"Configuration file not found at path: {filePath}");
+                ErrorHandler.LogInfo($"Starting mapping from {sourceType} to {targetType}.");
 
-                var config = await _jsonRepo.LoadJsonFileAsync(filePath);
+                var config = await PrepareConfig();
 
-                return _mapAlgorithm.Execute(source, sourceType, targetType, config);
+                var result = _mapAlgorithm.Execute(source, sourceType, targetType, config);
+
+
+                return result;
 
             }
             catch (Exception ex)
             {
-                log.Error("Error", ex);
-                throw new Exception("Unexpected error happened please check the logs");
+                var error = ErrorHandler.Handle(ex, null, false);
+                string message = error.IsShowMessage ? error.Message : "Unexpected error happened please check the logs";
+
+                throw new Exception(message);
+
             }
+            finally
+            {
+                ErrorHandler.LogInfo($"Mapping completed from {sourceType} to {targetType}.");
+            }
+        }
+
+        public async Task<MappingConfigurationMdl> PrepareConfig()
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config", "mapping-config.json");
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException($"Configuration file not found at path: {filePath}");
+
+            return await _jsonRepo.LoadJsonFileAsync(filePath);
         }
     }
 }

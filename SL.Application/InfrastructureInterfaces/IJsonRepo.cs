@@ -9,6 +9,6 @@ namespace SL.Application.InfrastructureInterfaces
 {
     public interface IJsonRepo
     {
-        Task<MappingConfiguration> LoadJsonFileAsync(string filePath);
+        Task<MappingConfigurationMdl> LoadJsonFileAsync(string filePath);
     }
 }
