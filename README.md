@@ -1,5 +1,3 @@
-Mapping System Architecture Documentation 
-Overview 
 The Mapping System is designed to dynamically map data from a source object to a target 
 object based on configurations defined in a JSON file. This system adheres to the Clean 
 Architecture principles, separating concerns across distinct layers to ensure flexibility, 
